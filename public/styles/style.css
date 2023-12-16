@@ -668,6 +668,9 @@ body {
 }
 
 @media (max-width: 43.7em) {
+  .mail_container {
+    max-width: 90%;
+  }
   /* html {
     font-size: 37.5%;
   } */
@@ -802,6 +805,9 @@ body {
     margin: 50px auto 0;
     text-align: center;
   }
+  .mail_container {
+    max-width: 90%;
+  }
 }
 @media (max-width: 26em) {
   .grid_layout {
@@ -837,5 +843,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+  .mail_container {
+    max-width: 90%;
   }
 }

@@ -1,0 +1,37 @@
+<%- include("partials/header.ejs") -%>
+
+<section class="updatepassword_section">
+  <div class="updatepassword_form">
+    <h1>Reset Password</h1>
+    <form action="/reset/<%= token %>" method="post">
+      <div class="form_div">
+        <label for="newpassword" class="forgot_label">New Password</label>
+        <br />
+        <input
+          type="password"
+          name="password"
+          id="newpassword"
+          class="form_control_input"
+        />
+      </div>
+      <div class="form_div">
+        <label for="newpassword" class="forgot_label">Re-enter Password</label>
+        <br />
+        <input
+          type="password"
+          name="repassword"
+          id="newpassword"
+          class="form_control_input"
+        />
+      </div>
+      <div class="add_note">
+        <button class="add_btn btn_submit">
+          Update password
+          <div class="overlay"></div>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<%- include("partials/footer") -%>

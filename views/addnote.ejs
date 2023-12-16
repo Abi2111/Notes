@@ -1,0 +1,35 @@
+<%- include("partials/dashboard_header.ejs") -%>
+
+<section class="section_notes">
+  <div class="reference"><a href="/dashboard">Dashboard</a>/Add Note</div>
+  <div class="title">Add note</div>
+  <form action="/addnotes" method="post" class="form_notes">
+    <div class="note_title">
+      <input
+        type="text"
+        name="heading"
+        id="heading"
+        placeholder="Title"
+        class="input_control_notes title_input"
+      />
+    </div>
+    <div class="note_content">
+      <textarea
+        name="note"
+        id="note"
+        cols="149"
+        rows="20"
+        class="input_control_notes textarea"
+        placeholder="Note"
+      ></textarea>
+    </div>
+    <div class="add_note">
+      <button class="add_btn btn_submit">
+        +Add note
+        <div class="overlay"></div>
+      </button>
+    </div>
+  </form>
+</section>
+
+<%- include("partials/footer") -%>

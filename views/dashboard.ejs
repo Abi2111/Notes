@@ -1,0 +1,62 @@
+<%- include("partials/dashboard_header.ejs") -%>
+
+<section class="dashboards">
+  <div class="dashboard_nav">
+    <div class="logo">
+      <div class="logo_title">
+        <h1><a href="/home">Notes</a></h1>
+      </div>
+    </div>
+
+    <div class="logo">
+      <div class="logo_title">
+        <h1><a href="/logout" class="logout">Logout</a></h1>
+      </div>
+    </div>
+  </div>
+  <div class="add_notes">
+    <div class="name">
+      <h2>Hey,<%= name %></h2>
+    </div>
+    <div class="add_note">
+      <a href="/addnotes" class="add_btn"
+        >+New note
+        <div class="overlay"></div>
+      </a>
+    </div>
+  </div>
+  <div class="grid_layout">
+    <!-- <div class="content_container">
+      <h1 class="note_heading">TailwindCSS</h1>
+      <p class="note_content">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum, cum
+        magni facere consectetur ad atque perferendis corporis commodi tempore
+        nam quasi minus porro quo quia recusandae aperiam rem! Fugit, culpa.s
+      </p>
+    </div> -->
+
+    <% if (modified.length > 0) { %> <% modified.forEach((note) => { %>
+    <div class="content_container">
+      <div class="edit_options">
+        <h1 class="note_heading"><%= note.title %></h1>
+        <div class="update_options">
+          <a href="/edit/<%= note.id %>" class="icon icon--edit"
+            ><ion-icon name="create-outline"></ion-icon
+          ></a>
+          <form action="/delete/<%= note.id %>?_method=DELETE" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <a href="/delete/<%= note.id %>" class="icon icon--delete"
+              ><ion-icon name="trash-outline"></ion-icon
+            ></a>
+          </form>
+        </div>
+      </div>
+      <p class="note_content"><%= note.notes %></p>
+    </div>
+    <% }) %> <% } else { %>
+    <p>No notes available.</p>
+    <% } %>
+  </div>
+</section>
+
+<%- include("partials/footer") -%>

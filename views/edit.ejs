@@ -1,0 +1,41 @@
+<%- include("partials/dashboard_header.ejs") -%>
+
+<section class="edit_section">
+  <h1>Edit Notes</h1>
+  <form
+    class="edit_form_container"
+    action="/edit/<%= id %>?_method=PUT"
+    method="POST"
+  >
+    <input type="hidden" name="_method" value="PUT" />
+    <div class="note_title">
+      <input
+        type="text"
+        name="heading"
+        id="heading"
+        value="<%= details.title%>"
+        placeholder="Title"
+        class="input_control_notes title_input"
+      />
+    </div>
+    <div class="note_content">
+      <textarea
+        name="note"
+        id="note"
+        cols="143"
+        rows="20"
+        class="input_control_notes"
+        placeholder="Note"
+      >
+ <%= details.notes%></textarea
+      >
+    </div>
+    <div class="add_note">
+      <button class="add_btn btn_submit">
+        +Add note
+        <div class="overlay"></div>
+      </button>
+  </form>
+</section>
+
+<%- include("partials/footer") -%>

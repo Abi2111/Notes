@@ -1,0 +1,19 @@
+<%if(success && success.length > 0){%>
+<div class="message_container message_container--success">
+  <div class="icon"></div>
+  <div class="message">
+    <h3>Success</h3>
+    <p><%= success %></p>
+  </div>
+</div>
+<% } else if(error && error.length > 0){ %>
+
+<div class="message_container message_container--error">
+  <div class="icon"></div>
+  <div class="message">
+    <h3>Warning</h3>
+    <p><%= error %></p>
+  </div>
+</div>
+
+<%} %>

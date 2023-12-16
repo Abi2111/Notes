@@ -1,0 +1,45 @@
+<%- include("partials/header.ejs") -%>
+
+<section class="section_signin">
+  <h1>Sign in</h1>
+  <div class="signin_container">
+    <form action="/signin" method="post">
+      <div class="form_div">
+        <label for="name" class="label">Full name</label>
+        <br />
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Name"
+          class="login_input_control"
+        />
+      </div>
+      <div class="form_div">
+        <label for="email" class="label">Email</label>
+        <br />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email address"
+          class="login_input_control"
+        />
+      </div>
+      <div class="form_div">
+        <label for="password" class="label">Password</label>
+        <br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          class="login_input_control"
+        />
+      </div>
+      <button class="btn_login">Sign in</button>
+    </form>
+  </div>
+</section>
+
+<%- include("partials/footer") -%>

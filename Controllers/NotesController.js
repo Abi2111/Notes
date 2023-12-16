@@ -45,7 +45,9 @@ exports.home = (req, res) => {
 exports.forgotpassword = (req, res) => {
   res.render('forgotpassword');
 };
-
+exports.sentmail = (req, res) => {
+  res.render('mailsent');
+};
 exports.edit = async (req, res) => {
   const id = req.params.id;
   const details = await Notes.findOne({ _id: id });
@@ -186,7 +188,7 @@ exports.resetTokenSend = async (req, res) => {
 
     await sendmail(options);
 
-    res.redirect('/login');
+    res.redirect('/sentmail');
   } catch (error) {}
 };
 

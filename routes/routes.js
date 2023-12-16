@@ -25,4 +25,5 @@ Router.route('/reset/:token')
 
 Router.route('/edit/:id').get(Controller.edit).put(Controller.updateNotes);
 Router.route('/delete/:id').get(Controller.deleteNote);
+Router.route('/sentmail').get(Controller.sentmail);
 module.exports = Router;

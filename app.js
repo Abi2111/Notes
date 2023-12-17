@@ -27,6 +27,7 @@ app.use(passport.session());
 passport.use(
   new localStrategy({ usernameField: 'email' }, User.authenticate())
 );
+
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(bodyPraser.urlencoded({ extended: true }));

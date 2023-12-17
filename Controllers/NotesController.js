@@ -3,6 +3,7 @@ const passport = require('passport');
 const Notes = require('./../Models/notesSchema');
 const crypto = require('crypto');
 const sendmail = require('./../Utils/sendMail');
+
 // Authentication middleware
 
 exports.checkAuthenticate = (req, res, next) => {
@@ -82,7 +83,6 @@ exports.dashboard = async (req, res) => {
 exports.createUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-
     if (!name || !email || !password) {
       return res.redirect('/signin');
     }

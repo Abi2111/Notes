@@ -16,6 +16,40 @@ body {
   background: var(--yellow_primary);
   font-family: 'Quicksand', sans-serif;
 }
+.loader_container {
+  position: fixed;
+  height: 100vh;
+  inset: 0;
+  background: #000;
+  z-index: 999;
+  display: grid;
+  place-content: center;
+}
+.loader_container svg {
+  stroke: #fff;
+  animation: 1s ease infinite alternate loader;
+  opacity: 1;
+  visibility: visible;
+  transition: all 1s;
+}
+.loader_container.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+/* Stroke animation */
+
+@keyframes loader {
+  from {
+    stroke-dashoffset: 20%;
+    stroke-dasharray: 20px 30%;
+    transform: scale(1);
+  }
+  to {
+    stroke-dashoffset: 20%;
+    stroke-dasharray: 50px 0%;
+    transform: scale(1.2);
+  }
+}
 .navbar {
   display: grid;
   grid-template-columns: 200px 1fr;

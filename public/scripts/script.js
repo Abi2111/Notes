@@ -4,7 +4,9 @@ const hero = document.querySelector('.hero');
 const loader = document.querySelector('.loader_container');
 
 window.addEventListener('load', () => {
-  loader.classList.add('loaded');
+  setTimeout(() => {
+    loader.classList.add('loaded');
+  }, 4000);
 });
 
 menu_btn.addEventListener('click', () => {

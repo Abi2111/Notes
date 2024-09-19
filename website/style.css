@@ -78,6 +78,26 @@ body {
 .hero_title p {
   font-size: 1.5rem;
 }
+.arrow_svg .draw {
+  stroke: #000;
+  stroke-dashoffset: 300px;
+  stroke-dasharray: 300px;
+  animation: 2s ease infinite animate;
+}
+.arrow_svg .arrow {
+  stroke: #000;
+  stroke-dashoffset: 30px;
+  stroke-dasharray: 30px;
+  animation: 2s ease infinite animate;
+  animation-delay: 2.5s;
+}
+
+@keyframes animate {
+  to {
+    stroke-dashoffset: 0px;
+  }
+}
+
 .human1 {
   position: absolute;
   left: 0;

@@ -54,7 +54,12 @@
       <p class="note_content"><%= note.notes %></p>
     </div>
     <% }) %> <% } else { %>
-    <p>No notes available.</p>
+    <div>
+      <p class="no-notes">No notes available.</p>
+      <a href="addnotes" style="margin-top: 1rem" class="signin--btn"
+        >Add new Note</a
+      >
+    </div>
     <% } %>
   </div>
 </section>

@@ -95,6 +95,7 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
+  display: none;
 }
 .menu_hamburger {
   display: flex;
@@ -328,10 +329,14 @@ body {
   margin: 0 auto;
 }
 .add_notes-btn {
+  display: inline-block;
+  margin: 2rem 0;
   font-size: 2rem;
-  letter-spacing: 1px;
   font-weight: 900;
-  padding: 10px 0;
+  padding: 10px;
+  text-decoration: none;
+  color: #111;
+  background: linear-gradient(180deg, white 0%, white 60%, transparent 100%);
 }
 .section_notes {
   margin: 50px auto 0;
@@ -357,22 +362,27 @@ body {
   margin: 0 auto;
 }
 .form_notes {
+  padding: 1rem;
+  box-sizing: border-box;
   max-width: 80%;
   margin: 0 auto;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
 }
 .form_notes .add_note {
   margin: 0 0 10px;
+  cursor: pointer;
 }
 .input_control_notes {
+  border-radius: 1rem;
   border: none;
   outline: none;
   font-family: inherit;
   padding: 10px;
   font-size: 1.5rem;
   font-weight: 500;
+  margin: 0.5rem 0;
 }
 .title_input {
   font-weight: 900;
@@ -952,4 +962,64 @@ body {
   .mail_container {
     max-width: 90%;
   }
+}
+
+/***************************************************************************************/
+.alert-msg span {
+  display: block;
+}
+.alert-msg,
+.alert-msg-success {
+  position: absolute;
+  display: flex;
+  top: 13%;
+  right: 5%;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  align-items: center;
+  font-size: 1.4rem;
+  gap: 10px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  transform: translateX(0px);
+  transition: all 1s;
+}
+.alert-msg {
+  color: red;
+  border-left: 5px solid red;
+}
+.alert-msg-success {
+  color: #2f9e44;
+  border-left: 5px solid #2f9e44;
+}
+.alert-msg.active,
+.alert-msg-success.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-30px);
+}
+@media (max-width: 27em) {
+  .alert-msg,
+  .alert-msg-success {
+    font-size: 1rem;
+    top: 18%;
+    right: 0%;
+    transform: translateX(-2px);
+  }
+}
+@media (max-width: 27em) {
+  .alert-msg,
+  .alert-msg-success {
+    font-size: 1rem;
+    top: 18%;
+    right: 0%;
+    transform: translateX(-2px);
+  }
+}
+
+/***************************************************************/
+.no-notes {
+  font-size: 1.7rem;
 }

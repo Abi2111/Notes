@@ -10,7 +10,7 @@ const User = require('./Models/userModel');
 const bodyPraser = require('body-parser');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
-
+app.use(express.json());
 dotEnv.config({ path: './config.env' });
 app.use(
   session({

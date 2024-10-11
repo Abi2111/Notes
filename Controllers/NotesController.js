@@ -65,7 +65,6 @@ exports.dashboard = async (req, res) => {
   const email = req.user.email;
   let name = req.user.name;
   let id = req.user._id;
-  name = name.split(' ')[1];
   let data = await Notes.find({ email });
   const modified = data.map(note => {
     return {
@@ -83,26 +82,38 @@ exports.dashboard = async (req, res) => {
 exports.createUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+
     if (!name || !email || !password) {
-      return res.redirect('/signin');
+      return res.status(400).json({
+        status: 'Failed',
+        error: 'All fields are required ',
+      });
     }
+
     const curUser = await User.findOne({ email });
     if (curUser) {
-      return res.redirect('/signin');
+      return res.status(400).json({
+        status: 'Failed',
+        error: 'User already exists ',
+      });
     }
-    const newUser = {
-      name: name,
-      email: email,
-    };
-    User.register(newUser, req.body.password, (err, user) => {
+    const newUser = { name, email };
+    User.register(newUser, password, (err, user) => {
       if (err) {
-        return res.redirect('/signin');
+        return res.status(500).json({ message: 'Error creating user' });
       }
       passport.authenticate('local')(req, res, () => {
-        res.render('login');
+        res.status(201).json({
+          status: 'Success',
+        });
       });
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json({
+      status: 'Failed',
+      error: error.message,
+    });
+  }
 };
 
 // Login user
@@ -119,11 +130,13 @@ exports.success = (req, res) => {
   }
   res.redirect('/login');
 };
-exports.logIn = (req, res) => {
+exports.logIn = async (req, res) => {
   let name = req.query.name || 'User';
-  const id = req.user._id;
+  let email = req.email || 'User';
+  let data = await Notes.find({ email });
+  console.log(data);
 
-  name = name.split(' ')[1];
+  const id = req.user._id;
   res.render('main', { name, id });
 };
 //  Logout User

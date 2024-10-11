@@ -1,9 +1,9 @@
 <%- include("partials/header.ejs") -%>
 
 <section class="section_signin">
-  <h1>Sign in</h1>
+  <h1>Sign up</h1>
   <div class="signin_container">
-    <form action="/signin" method="post">
+    <form action="/signin" method="post" id="signupForm">
       <div class="form_div">
         <label for="name" class="label">Full name</label>
         <br />
@@ -40,6 +40,61 @@
       <button class="btn_login">Sign in</button>
     </form>
   </div>
+  <div class="alert-msg">
+    <span> <ion-icon name="warning-outline"></ion-icon> </span>
+    <span>error occurs</span>
+  </div>
 </section>
 
 <%- include("partials/footer") -%>
+<script>
+  const form = document.querySelector('form');
+  const alert_msg = document.querySelector('.alert-msg');
+
+  const signupRequest = async details => {
+    try {
+      const response = await fetch('/signin', {
+        method: 'POST',
+        body: JSON.stringify(details),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const res = await response.json();
+      if (res.status === 'Success') {
+        location.assign('/');
+      }
+      if (res.status === 'Failed') {
+        alert_msg.innerHTML = ` <ion-icon name="warning-outline"></ion-icon
+              ><span>${res.error}</span>`;
+        alert_msg.classList.add('active');
+        setTimeout(() => {
+          alert_msg.classList.remove('active');
+        }, 4000);
+      }
+    } catch (error) {
+      if (res.status === 'Failed') {
+        alert_msg.innerHTML = ` <ion-icon name="warning-outline"></ion-icon
+              ><span>${res.error}</span>`;
+        alert_msg.classList.add('active');
+        setTimeout(() => {
+          alert_msg.classList.remove('active');
+        }, 4000);
+      }
+    }
+  };
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+
+    console.log(formData);
+    signupRequest(formData);
+  });
+</script>

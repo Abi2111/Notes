@@ -3,7 +3,7 @@ bashCopy code
 FROM node:18
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /server
 
 # Copy the application files into the working directory
 COPY package*.json ./

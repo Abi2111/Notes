@@ -10,5 +10,5 @@ mongoose.connect(DB).then(conn => {
   console.log('Connected to DB');
 });
 app.listen(PORT, () => {
-  console.log('Listening to the PORT', PORT);
+  console.log('Server started ', PORT);
 });
